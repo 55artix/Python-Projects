@@ -9,13 +9,13 @@
 
 def sound(weight):
     if weight<13:
-        print('Yip')
+        return 'Yip'
     elif weight>=13 and weight<=30:
-        print('Ruff')
+        return 'Ruff'
     elif weight>=31 and weight<=70:
-        print('Bark')
+        return 'Bark'
     elif weight>70:
-        print('Boof')
+        return 'Boof'
     
 #hw3b)
 #==========================================
@@ -37,12 +37,14 @@ def choice(text, option1, option2, option3):
     print('1.%s' % (option1))
     print('2 %s' % (option2))
     print('3 %s' % (option3))
-    Your_Choice = int(input('Choose 1, 2, or 3:'))
-    print(Your_Choice)
-    while Your_Choice < 1 or Your_Choice > 3:
-        print('Invalid option')
-        Your_Choice = int(input('Choose 1, 2, or 3:'))
-    return Your_Choice
+    Your_choice=0
+    while Your_choice==0:
+        Your_input = input('Choose 1, 2, or 3:')
+        if Your_input=='1' or Your_input=='2' or Your_input=='3':
+            Your_choice=int(Your_input)
+        else:
+            print('invalid option\n')
+    return Your_choice
 
 #hw3c)
 #==========================================
@@ -92,13 +94,11 @@ def adventure():
             return False
     if state == 5:
         the_choice = choice("Choose a villain to fight", "Magneto", "Thanos", "Taskmaster")
-        if the_choice == 1:
+        if the_choice == 1 or the_choice==3:
             print("Congrats! You have successfully defeated your first villain!")
             return True
         elif the_choice == 2:
             print("You and half the population have turned to dust!")
             return False
-        elif the_choice == 3:
-            print("You and Black Widow have successfully defeated Taskmaster!")
-            return True
+        
         
