@@ -1,10 +1,11 @@
 
 #hw3a)
 #==========================================
-# Purpose: The function prints out the sound that a dog makes based on the weight
+# Purpose: The function returns the sound that a dog makes based on the weight
 # of the dog entered as an integer in the function.  
-# Input Parameter(s): The dog's weight in pounds
-# Return Value(s): No returns
+# Input Parameter(s): The dog's weight in pounds (data type: integer)
+# Return Value(s):
+# Returns the strings 'Yip'(if weight<13), 'Ruff'(if weight>=13 and weight<=30), 'Bark' (if weight>=31 and weight<=70), or 'Boof' (ifweight>70)   
 #==========================================
 
 def sound(weight):
@@ -25,10 +26,10 @@ def sound(weight):
 # you back to choose again.  
 # Input Parameter(s):
 # text - the prompt for the choices
-# option1 - the first option in the game
-# option2 - the second option in the game
-# option3 - the third option in the game
-# Return Value(s): The option that you've chosen.
+# option1 - the first option in the game (data type: string)
+# option2 - the second option in the game (data type: string)
+# option3 - the third option in the game (data type: string)
+# Return Value(s): The option that you've chosen (Your_choice, data type:integer)
 #==========================================
 
 def choice(text, option1, option2, option3):
