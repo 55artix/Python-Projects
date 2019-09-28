@@ -76,7 +76,18 @@ def prime(number):
 #   100 weeks
 #==========================================
 def population(small, middle, big):
-    return
+    for week in range(1,101):
+        next_small=small+0.10*small-0.0002*small*middle
+        next_middle=middle-.05*middle-0.00025*middle*big+0.5*0.0002*middle*small
+        next_big=big+0.8*0.00025*middle*big-0.10*big
+        small=next_small
+        middle=next_middle
+        big=next_big
+        print('Week %d - Small: %d Middle: %d Big: %d' % (week,small, middle,big))
+        if small<10 or middle<10 or big<10:
+            return week
+    if small<100 or middle<100 or big<100:
+        return week
         
 
 
