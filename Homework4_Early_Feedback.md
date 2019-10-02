@@ -6,7 +6,7 @@ Passing these tests is not a guarantee of a perfect homework score: the tests do
 
 Any questions/errors with the Automated Feedback should be reported to Nathan Taylor: taylo740@umn.edu
 
-Run on October 02, 00:03:35 AM.
+Run on October 02, 00:10:33 AM.
 
 + Pass: Change into directory "hw4".
 
@@ -21,76 +21,6 @@ Run on October 02, 00:03:35 AM.
 
 
 + Pass: Writing encrypted5.txt into local directory  
-File Contents:
-```
-402153397
-iojzkpgqzcv{c{z{kicgmnd|teggoah|xe
-
-```
-
-File Contents:
-```
-402153397
-iojzkpgqzcv{c{z{kicgmnd|teggoah|xe
-
-```
-
-File Contents:
-```
-402153397
-iojzkpgqzcv{c{z{kicgmnd|teggoah|xe
-
-```
-
-File Contents:
-```
-402153397
-iojzkpgqzcv{c{z{kicgmnd|teggoah|xe
-
-```
-
-File Contents:
-```
-402153397
-iojzkpgqzcv{c{z{kicgmnd|teggoah|xe
-
-```
-
-File Contents:
-```
-402153397
-iojzkpgqzcv{c{z{kicgmnd|teggoah|xe
-
-```
-
-File Contents:
-```
-402153397
-iojzkpgqzcv{c{z{kicgmnd|teggoah|xe
-
-```
-
-File Contents:
-```
-402153397
-iojzkpgqzcv{c{z{kicgmnd|teggoah|xe
-
-```
-
-File Contents:
-```
-402153397
-iojzkpgqzcv{c{z{kicgmnd|teggoah|xe
-
-```
-
-File Contents:
-```
-402153397
-iojzkpgqzcv{c{z{kicgmnd|teggoah|xe
-
-```
-
 File Contents:
 ```
 402153397
