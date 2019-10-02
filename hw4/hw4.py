@@ -36,10 +36,12 @@ def find_password(filename):
 #   Returns the number of prime numbers between low and high, inclusive
 #==========================================
 def count_primes(low, high):
+    count=0
     for x in range(low,high+1):
         if prime(x):
             print('%d is prime' % x )
-    
+            count+=1
+    return count
 #==========================================
 # Purpose:
 #   Tests whether a number is prime or not, returning 'True' for prime numbers and 'False' for numbers that are not prime.  
@@ -86,8 +88,7 @@ def population(small, middle, big):
         print('Week %d - Small: %d Middle: %d Big: %d' % (week,small, middle,big))
         if small<10 or middle<10 or big<10:
             return week
-    if small<100 or middle<100 or big<100:
-        return week
+    return week
         
 
 
