@@ -44,25 +44,26 @@ def open_slots(board):
 #==========================================
         
 def winner(board):
-    if board[0]==board[1]==board[2]:
-        return board[0]
-    if board[3]==board[4]==board[5]:
+    if board[0]==board[1]==board[2] and board[0]!='-':
+        return board[2]
+    elif board[3]==board[4]==board[5] and board[5]!='-':
         return board[5]
-    if board[6]==board[7]==board[8]:
+    elif board[6]==board[7]==board[8] and board[8]!='-':
         return board[8]   
-    if board[0]==board[3]==board[6]:
+    elif board[0]==board[3]==board[6] and board[6]!='-':
         return board[6]
-    if board[1]==board[4]==board[7]:
+    elif board[1]==board[4]==board[7] and board[7]!='-':
         return board[7]
-    if board[2]==board[5]==board[8]:
+    elif board[2]==board[5]==board[8] and board[8]!='-':
         return board[8]
-    if board[0]==board[4]==board[8]:
+    elif board[0]==board[4]==board[8] and board[8]!='-':
         return board[8] 
-    if board[2]==board[4]==board[6]:
+    elif board[2]==board[4]==board[6] and board[6]!='-':
         return board[6]
-    for PeterQuillisStupid in board:
-        if PeterQuillisStupid=='-':
-            return PeterQuillisStupid
+    else:
+        for PeterQuillisStupid in board:
+            if PeterQuillisStupid=='-':
+                return PeterQuillisStupid
     return 'D'
         
 #==========================================
