@@ -1,5 +1,5 @@
-## Your Name
-## Your x500
+## Christina Lu
+## Luxx0611
 
 
 # Part 1: Inversion
