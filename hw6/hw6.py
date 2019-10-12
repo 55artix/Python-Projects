@@ -81,7 +81,6 @@ def rotate(img_matrix):
 #==========================================
 
 def edge_detect(img_matrix):
-    print(img_matrix[1][1])
     import copy
     new_img_mat=copy.deepcopy(img_matrix)
     for Row in range(len(img_matrix)):
