@@ -81,7 +81,7 @@
 
   
 
-### 09/10 points : tic-tac-toe()
+### 10/10 points : tic-tac-toe()
 
 #### Points Deducted:
 
