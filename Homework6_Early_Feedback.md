@@ -6,13 +6,13 @@ Passing these tests is not a guarantee of a perfect homework score: the tests do
 
 Any questions/errors with the Automated Feedback should be reported to Nathan Taylor: taylo740@umn.edu
 
-Run on October 15, 01:32:45 AM.
+Run on October 16, 00:19:26 AM.
 
 + Pass: Change into directory "hw6".
 
 + Pass: Check that file "hw6.py" exists.
 
-+ Pass: Check that Python file "hw6.py" only imports permitted modules.
++ Pass: Secret Test
 
 + Pass: Check that a Python file "hw6.py" has no syntax errors.
 
