@@ -70,8 +70,39 @@ def force_win(board):
                 board_copy[spot]='O'
                 states.append(force_win(board_copy))
             return min(states)
+#==========================================
+# Purpose: The function "tic_tac_toe" takes no parameters and creates a random tic tac toe game for the "X" player,
+#            and calls the force_win function to cause the AI to move for 'O', so 'X' never wins.  It returns a one character string for the winner, or 'D' for draw.
+# Input Parameter(s): None
+# Return Value(s): Victory: Returns 'X' or 'O' strings based on the winner
+# winner(board):The function winner(board) will return 'D' for draw outside the loop
+#==========================================    
+def tic_tac_toe():
+    import random
+    board=['-','-','-','-','-','-','-','-','-']
+    Alternate=0
+    while open_slots(board)!=[]:
+        open_slot_list=open_slots(board)
+        if Alternate==0:
+            random_index=random.randint(0,len(open_slot_list)-1)
+            board_index=open_slot_list[random_index]
+            board[board_index]='X'
+            Alternate=1
+        elif Alternate==1:
+            states=[]
+            for i in open_slot_list:
+                board_copy=board[:]
+                board_copy[i]='O'
+                states.append(force_win(board_copy))
+            index_minimum=states.index(min(states))
+            board[open_slot_list[index_minimum]]='O'
+            Alternate=0
+        Victory=winner(board)
+        if Victory=='X' or Victory=='O':
+            return Victory
+    return winner(board)       
                
-    #Here are all the functions from Hw5 (the tic_tac_toe has been edited)
+    #Here are all the functions from Hw5 
 #==========================================
 # Purpose: The function "open_slots" takes in one list parameter and tests to see which index in the list is a blank slot.
 #           The indexes with blank slots are appended to the index_list and the index_list is returned.  
@@ -119,37 +150,7 @@ def winner(board):
                 return PeterQuillisStupid
     return 'D'
         
-#==========================================
-# Purpose: The function "tic_tac_toe" takes no parameters and creates a random tic tac toe game for the "X" player,
-#            and calls the force_win function to cause the AI to move for 'O', so 'X' never wins.  It returns a one character string for the winner, or 'D' for draw.
-# Input Parameter(s): None
-# Return Value(s): Victory: Returns 'X' or 'O' strings based on the winner
-# winner(board):The function winner(board) will return 'D' for draw outside the loop
-#==========================================    
-def tic_tac_toe():
-    import random
-    board=['-','-','-','-','-','-','-','-','-']
-    Alternate=0
-    while open_slots(board)!=[]:
-        open_slot_list=open_slots(board)
-        if Alternate==0:
-            random_index=random.randint(0,len(open_slot_list)-1)
-            board_index=open_slot_list[random_index]
-            board[board_index]='X'
-            Alternate=1
-        elif Alternate==1:
-            states=[]
-            for i in open_slot_list:
-                board_copy=board[:]
-                board_copy[i]='O'
-                states.append(force_win(board_copy))
-            index_minimum=states.index(min(states))
-            board[open_slot_list[index_minimum]]='O'
-            Alternate=0
-        Victory=winner(board)
-        if Victory=='X' or Victory=='O':
-            return Victory
-    return winner(board)
+
      #==========================================
 # Purpose: The function "play_games" takes in the parameter integer n, the number of games to play. It calls the tic_tac_toe
 #           function n times and prints the number of times each player wins and the number of times a draw occurs.
