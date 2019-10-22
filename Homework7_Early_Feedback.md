@@ -6,7 +6,7 @@ Passing these tests is not a guarantee of a perfect homework score: the tests do
 
 Any questions/errors with the Automated Feedback should be reported to Nathan Taylor: taylo740@umn.edu
 
-Run on October 22, 00:48:20 AM.
+Run on October 22, 01:00:50 AM.
 
 + Pass: Change into directory "hw7".
 
@@ -14,15 +14,13 @@ Run on October 22, 00:48:20 AM.
 
 + Pass: Secret Test
 
-+ Fail: Check that a Python file "hw7.py" has no syntax errors.
++ Pass: Check that a Python file "hw7.py" has no syntax errors.
 
-    Python file hw7.py does not terminate within 1 seconds.
-
-    Check for infinite loops/recursion.
+    Python file "hw7.py" has no syntax errors.
 
 
 
-+ Skip: 
++ Pass: 
 Check that the result of evaluating
    ```
    collatz(42)
@@ -32,9 +30,9 @@ Check that the result of evaluating
    
 
 
-  This test was not run because of an earlier failing test.
 
-+ Skip: 
+
++ Pass: 
 Check that the result of evaluating
    ```
    find_min([4, 0, -6, 5, -8, 6, -5, -6])
@@ -44,9 +42,9 @@ Check that the result of evaluating
    
 
 
-  This test was not run because of an earlier failing test.
 
-+ Skip: 
+
++ Pass: 
 Check that the result of evaluating
    ```
    force_win(['-', '-', 'X', '-', 'O', 'O', 'X', 'O', 'X'])
@@ -56,9 +54,9 @@ Check that the result of evaluating
    
 
 
-  This test was not run because of an earlier failing test.
 
-+ Skip: 
+
++ Pass: 
 Check that the result of evaluating
    ```
    tic_tac_toe() in ['O', 'D']
@@ -68,9 +66,9 @@ Check that the result of evaluating
    
 
 
-  This test was not run because of an earlier failing test.
 
-+ Skip: 
+
++ Pass: 
 Check that the result of evaluating
    ```
    ([tic_tac_toe() for i in range(20)]).count('X')
@@ -80,9 +78,9 @@ Check that the result of evaluating
    
 
 
-  This test was not run because of an earlier failing test.
 
-+ Skip: 
+
++ Pass: 
 Check that the result of evaluating
    ```
    1 < ([tic_tac_toe() for i in range(60)]).count('D') < 30
@@ -92,5 +90,5 @@ Check that the result of evaluating
    
 
 
-  This test was not run because of an earlier failing test.
+
 
