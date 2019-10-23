@@ -1,3 +1,4 @@
+import random
 #A)
 #==========================================
 # Purpose: The function takes in a positive integer n and will return the list of numbers in
@@ -78,7 +79,6 @@ def force_win(board):
 # winner(board):The function winner(board) will return 'D' for draw outside the loop
 #==========================================    
 def tic_tac_toe():
-    import random
     board=['-','-','-','-','-','-','-','-','-']
     Alternate=0
     while open_slots(board)!=[]:
