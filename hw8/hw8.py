@@ -112,8 +112,7 @@ def full_name_index(row1_str):
     for i in range(len(row1_list)):
         if row1_list[i]=='Full Name':
             return i
-        else:
-            return -1
+    return -1
     #Hints:
     #   Use get_data_list to read in the rows from the file
     #   Use hw8_index to determine which column you need to change
