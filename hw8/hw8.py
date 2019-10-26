@@ -105,7 +105,7 @@ def haxx(fname):
 #   (the column titles) in the CSV file
 # Return Value:
 #   Returns the index of the column labelled 'Full Name' (an integer)
-#   OR returns -1 if there is no column labelled 'hw8 Grade'
+#   OR returns -1 if there is no column labelled 'Full Name'
 #==========================================
 def full_name_index(row1_str):
     row1_list=row1_str.split(',')
