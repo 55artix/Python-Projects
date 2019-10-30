@@ -90,7 +90,7 @@ def haxx(fname):
     name_column=full_name_index(Extract_data[0])
     open_file=open(fname,'w')
     open_file.write(Extract_data[0])
-    for i in range(len(Extract_data)):
+    for i in range(1,len(Extract_data)):
         list_of_row=Extract_data[i].split(',')
         if list_of_row[name_column]=='Christina Lu':
             Extract_data[i]=alter_grade(Extract_data[i],hw8_column)
