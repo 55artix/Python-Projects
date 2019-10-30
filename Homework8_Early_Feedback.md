@@ -6,7 +6,7 @@ Passing these tests is not a guarantee of a perfect homework score: the tests do
 
 Any questions/errors with the Automated Feedback should be reported to Nathan Taylor: taylo740@umn.edu
 
-Run on October 29, 02:57:07 AM.
+Run on October 30, 01:55:27 AM.
 
 + Pass: Change into directory "hw8".
 
@@ -130,9 +130,8 @@ Check that the result of evaluating
 
 
 
-+ Fail: Checking that contents of test8.csv
++ Pass: Checking that contents of test8.csv
 ```
-hw8 Grade but not really,hw8 Grade,Full Name,Destined for Greatness
 hw8 Grade but not really,hw8 Grade,Full Name,Destined for Greatness
 0,????,Fake Name,Yes
 0,????,Not Real,Yes
