@@ -68,7 +68,7 @@ def fanfic(fname):
         sentence=sentence+' '+next_w
         print (sentence)
 #B)
-#Purpose: Takes in a nested fictionary representing a directory and returns the total memory in bytes being used by the files.  
+#Purpose: Takes in a nested dictionary representing a directory and returns the total memory in bytes being used by the files.  
 # Input Parameter(s): dictionary:a nested dictionary representing a directory. 
 # Return Value(s): The total memory in bytes used by the files 
 #==========================================
