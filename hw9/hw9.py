@@ -68,16 +68,13 @@ def fanfic(fname):
         sentence=sentence+' '+next_w
         print (sentence)
 #B)
+#Purpose: Takes in a nested fictionary representing a directory and returns the total memory in bytes being used by the files.  
+# Input Parameter(s): dictionary:a nested dictionary representing a directory. 
+# Return Value(s): The total memory in bytes used by the files 
+#==========================================
 def total_txt_size(dictionary):
     if dictionary=={}:
         return 0
-    elif len(dictionary)==1:
-        first_key=list(dictionary.keys())[0]
-        first_value=dictionary[first_key]
-        if type(first_value) is int:
-            return first_value
-        else:
-            return total_txt_size(first_value)
     else:
         first_key=list(dictionary.keys())[0]
         first_value=dictionary[first_key]
