@@ -3,7 +3,7 @@
  * Grader Name: **Grace Zenzen**
  * Grader email: **zenze007@umn.edu**
  * Homework Total: **40**
- * Grade: **38.5**
+ * Grade: **39**
 
 ## General Deductions:
 
@@ -13,7 +13,7 @@
 
 ## get_data_list (10 pnts):
 
-### Points Deducted: 0.5
+### Points Deducted:
 
 * +1 Correct Function Definition
 * +1 Correct Return Type 
@@ -22,7 +22,7 @@
  * +1 Closes the file at the end
  * +2 Tests (+0.5 pt/each)
 	 * No File
-	 * Empty File -0.5
+	 * Empty File 
 	 * 1 Line File
 	 * Multi-Line File
 
