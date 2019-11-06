@@ -70,7 +70,7 @@ def fanfic(fname):
 #B)
 #Purpose: Takes in a nested dictionary representing a directory and returns the total memory in bytes being used by the files.  
 # Input Parameter(s): dictionary:a nested dictionary representing a directory. 
-# Return Value(s): The total memory in bytes used by the files 
+# Return Value(s): The total memory in bytes used by the files that end in txt.  
 #==========================================
 def total_txt_size(dictionary):
     if dictionary=={}:
@@ -80,6 +80,11 @@ def total_txt_size(dictionary):
         first_value=dictionary[first_key]
         dictionary.pop(first_key)
         if type(first_value) is int:
-            return first_value+total_txt_size(dictionary)
+            file_name_list=first_key.split('.')
+            if file_name_list[len(file_name_list)-1]=='txt':
+                bytes_=first_value+total_txt_size(dictionary)
+                return bytes_
+            else:
+                return total_txt_size(dictionary)
         else:
             return total_txt_size(first_value)+total_txt_size(dictionary)
