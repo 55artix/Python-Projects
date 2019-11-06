@@ -6,7 +6,7 @@ Passing these tests is not a guarantee of a perfect homework score: the tests do
 
 Any questions/errors with the Automated Feedback should be reported to Nathan Taylor: taylo740@umn.edu
 
-Run on November 05, 01:47:37 AM.
+Run on November 06, 03:21:20 AM.
 
 + Pass: Change into directory "hw9".
 
@@ -85,22 +85,22 @@ Check that the result of evaluating
    Your solution produced: 
 ```
  
-He had such a knowledge of the Force is a knowledge of the Jedi would tell you ever hear the Jedi would tell you ever hear the only thing he taught his sleep .
-I thought not himself .
-I thought not .
-The dark side that he could even keep the Sith so powerful and so wise he could even keep the Jedi would tell you .
-Unfortunately he did .
-Unfortunately he taught his apprentice killed him in his power which eventually of was a Sith so powerful and so powerful and so powerful and so wise .
-It's a Dark Lord of course he taught his power which eventually of the only thing he cared about from dying .
-Did you ever hear the ones he could use the only thing he could save others from dying .
-Unfortunately he could use the dark side that he could use the Force is a story the Sith so wise he knew then his sleep .
-He had such a story the Sith so powerful the Tragedy of the Force is a knowledge of was losing his apprentice killed him in his power which eventually of the midichlorians to influence the Sith so powerful and so wise he was losing his power which eventually of Darth Plagueis the Force to influence the wise .
+It's a pathway to be unnatural .
+Ironic .
+It's a story the dark side of the only thing he could even keep the Sith legend .
+He could even keep the only thing he did .
+He could use the ones he could use the Force to influence the Force to influence the Sith legend .
+Unfortunately he could save others from dying .
+He could save others from death but not himself .
+Darth Plagueis the Tragedy of was afraid of was a story the midichlorians to create life .
+Ironic .
+Ironic .
 ```
 
 
 
 
-+ Fail: 
++ Pass: 
 Check that the result of evaluating
    ```
    total_txt_size({'z':{'y':{'x.txt':6, 'w.txt.zip.py':2, 'vu':{}, 'tea.txt':4}, 's.c':3, 'rq':{'p':{}, 'o':{'nml.txt':1}}}, 'kjih.java':5})
@@ -110,9 +110,5 @@ Check that the result of evaluating
    
 
 
-   Your solution evaluated incorrectly and produced:
-
- ` 
-21`
 
 
