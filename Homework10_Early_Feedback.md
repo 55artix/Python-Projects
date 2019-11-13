@@ -6,7 +6,7 @@ Passing these tests is not a guarantee of a perfect homework score: the tests do
 
 Any questions/errors with the Automated Feedback should be reported to Nathan Taylor: taylo740@umn.edu
 
-Run on November 12, 03:41:43 AM.
+Run on November 13, 01:05:43 AM.
 
 + Pass: Change into directory "hw10".
 
@@ -375,7 +375,7 @@ Check that the result of evaluating
 
 
 
-+ Fail: 
++ Pass: 
 Check that the result of evaluating
    ```
    Branch('rogueport.csv') < Branch('normandy.csv')
@@ -385,16 +385,6 @@ Check that the result of evaluating
    
 
 
-   Test failed. The following errors were reported:
-
-```
- 
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-  File "hw10.py", line 231, in __lt__
-    if self.profit()<other.profit:
-TypeError: '<' not supported between instances of 'float' and 'method'
-```
 
 
 + Fail: 
