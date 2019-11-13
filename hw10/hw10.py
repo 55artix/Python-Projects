@@ -227,7 +227,7 @@ class Branch:
 #the left operand has a lower value than the right operand.   
 #==========================================
     def __lt__(self,other):
-        if self.profit()<other.profit:
+        if self.profit()<other.profit():
             return True
         else:
             return False
@@ -333,13 +333,9 @@ class Company:
 # Return Value(s): none
 #==========================================
     def synergize(self):
-        profit_list=[]
-        for item in self.branches:
-            profit_total=item.profit()
-            profit_list.append(profit_total)
-        sorted_profits=sorted(profit_list)
-        low_profit=sorted_profits[0]
-        index=profit_list.index(low_profit)
+        sorted_branches=sorted(self.branches)
+        low_branch=sorted_branches[0]
+        index=self.branches.index(low_branch)
         cut_branch=self.branches[index]
         Num_ppl_cut=len(cut_branch.team)//2
         cut_branch.cut(Num_ppl_cut)
