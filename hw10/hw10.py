@@ -191,7 +191,9 @@ class Branch:
         self.location=word_list[1]
         word_list2=list_lines[1].split(',')
         self.upkeep=float(word_list2[1])
-        self.team=list_lines[3:]
+        self.team=[]
+        for item in list_lines[3:]:
+            self.team.append(Employee(item))
 #==========================================
 # Purpose: Overloads the string method to return a string containing the location of the branch, followed by the string
 # representation of each employee separated by newlines.  
@@ -202,8 +204,7 @@ class Branch:
     def __str__(self):
         string=str(self.location)+'\n'
         for item in self.team:
-            list_word=item.split(',')
-            string+=str(list_word[0])+', '+str(list_word[1])+'\n'
+            string+=str(item.name)+', '+str(item.position)+'\n'
         return string
 #==========================================
 # Purpose: Write method profit to return the sum of the net values of all the emplyees in the branch, minus
@@ -215,8 +216,7 @@ class Branch:
     def profit(self):
         total_profit= -self.upkeep
         for item in self.team:
-            E=Employee(item)
-            total_profit+=E.net_value()
+            total_profit+=item.net_value()
         return total_profit
 #==========================================
 # Purpose: Overload the < operator so it takes in another Branch object and returns True or False based on whether or not
@@ -238,18 +238,13 @@ class Branch:
 #num-num is an integer representing the number of employees that must be cut from the branch
 # Return Value(s):cut sorts employees by their net value, and removes the lowest num Employees from the team list.  
 #==========================================
-    def cut(self,num):
-        employee_list=[]
-        for item in self.team:
-            E=Employee(item)
-            employee_list.append(E)
-            
-        sorted_employees=sorted(employee_list)
+    def cut(self,num):    
+        sorted_employees=sorted(self.team)
         for i in range(num):
             sorted_employees.pop(0)
         kept_employees=[]
         for item in sorted_employees:
-            index=employee_list.index(item)
+            index=self.team.index(item)
             kept_employees.append(self.team[index])
         self.team=kept_employees
         
@@ -328,17 +323,15 @@ class Company:
            string+=str(item)+'\n'
         return string
 #==========================================
-# Purpose: Implements the HR policy to find the branhc with the lowest profit margin and cut hald of the employees from that branch.   
+# Purpose: Implements the HR policy to find the branch with the lowest profit margin and cut hald of the employees from that branch.   
 # Input Parameter(s): self-provides a reference to the class instance.
 # Return Value(s): none
 #==========================================
     def synergize(self):
         sorted_branches=sorted(self.branches)
         low_branch=sorted_branches[0]
-        index=self.branches.index(low_branch)
-        cut_branch=self.branches[index]
-        Num_ppl_cut=len(cut_branch.team)//2
-        cut_branch.cut(Num_ppl_cut)
+        Num_ppl_cut=len(low_branch.team)//2
+        low_branch.cut(Num_ppl_cut)
        
 #b1 = Branch('branch1.csv')
 #b2 = Branch('branch2.csv')
