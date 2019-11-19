@@ -117,7 +117,7 @@ class Thief(Adventurer):
                 self.hidden=False
                 damage=(self.speed+self.level)*5
                 target.HP-=damage
-                print(str(self.name)+' sneak attacks '+str(target.name)+' for '+str(damage))+' damage'
+                print(str(self.name)+' sneak attacks '+str(target.name)+' for '+str(damage)+' damage')
 class Wizard(Adventurer):
 #==========================================
 # Purpose: The Wizard constructor takes the same parameters as its superclass constructor
