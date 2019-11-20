@@ -6,7 +6,7 @@ Passing these tests is not a guarantee of a perfect homework score: the tests do
 
 Any questions/errors with the Automated Feedback should be reported to Nathan Taylor: taylo740@umn.edu
 
-Run on November 19, 01:46:41 AM.
+Run on November 20, 01:12:57 AM.
 
 + Pass: Change into directory "hw11".
 
@@ -320,7 +320,7 @@ Check that the result of evaluating
 
 
 
-+ Fail: 
++ Pass: 
 Check that the result of evaluating
    ```
    b2 = Fighter('2B',5,8,5,2); s9 = Thief('9S',3,2,6,4); s9.attack(b2); b2.HP
@@ -330,20 +330,9 @@ Check that the result of evaluating
    
 
 
-   Test failed. The following errors were reported:
-
-```
- 
-9S sneak attacks 2B for 45
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-  File "hw11.py", line 121, in attack
-    print(str(self.name)+' sneak attacks '+str(target.name)+' for '+str(damage))+' damage'
-TypeError: unsupported operand type(s) for +: 'NoneType' and 'str'
-```
 
 
-+ Fail: 
++ Pass: 
 Check that the result of evaluating
    ```
    b2 = Fighter('2B',5,8,5,2); s9 = Thief('9S',3,2,6,4); s9.attack(b2); b2.attack(s9); s9.HP
@@ -353,17 +342,6 @@ Check that the result of evaluating
    
 
 
-   Test failed. The following errors were reported:
-
-```
- 
-9S sneak attacks 2B for 45
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-  File "hw11.py", line 121, in attack
-    print(str(self.name)+' sneak attacks '+str(target.name)+' for '+str(damage))+' damage'
-TypeError: unsupported operand type(s) for +: 'NoneType' and 'str'
-```
 
 
 + Pass: 
@@ -378,7 +356,7 @@ Check that the result of evaluating
 
 
 
-+ Fail: 
++ Pass: 
 Check that the result of evaluating
    ```
    s9 = Thief('9S',3,2,6,4); s9.attack(s9); s9.HP
@@ -388,17 +366,6 @@ Check that the result of evaluating
    
 
 
-   Test failed. The following errors were reported:
-
-```
- 
-9S sneak attacks 9S for 45
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-  File "hw11.py", line 121, in attack
-    print(str(self.name)+' sneak attacks '+str(target.name)+' for '+str(damage))+' damage'
-TypeError: unsupported operand type(s) for +: 'NoneType' and 'str'
-```
 
 
 + Pass: 
@@ -425,7 +392,7 @@ Check that the result of evaluating
 
 
 
-+ Fail: 
++ Pass: 
 Check that the result of evaluating
    ```
    a2 = Wizard('A2',6,4,3,1); s9 = Thief('9S',3,2,6,4); s9.attack(a2); a2.HP
@@ -435,17 +402,6 @@ Check that the result of evaluating
    
 
 
-   Test failed. The following errors were reported:
-
-```
- 
-9S sneak attacks A2 for 45
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-  File "hw11.py", line 121, in attack
-    print(str(self.name)+' sneak attacks '+str(target.name)+' for '+str(damage))+' damage'
-TypeError: unsupported operand type(s) for +: 'NoneType' and 'str'
-```
 
 
 + Pass: 
@@ -484,7 +440,7 @@ Check that the result of evaluating
 
 
 
-+ Fail: 
++ Pass: 
 Check that the result of evaluating
    ```
    a2 = Wizard('A2',6,4,3,1); s9 = Thief('9S',3,2,6,4); duel(s9,a2)
@@ -494,24 +450,9 @@ Check that the result of evaluating
    
 
 
-   Test failed. The following errors were reported:
-
-```
- 
-9S - HP: 24
-A2 - HP: 36
-9S sneak attacks A2 for 45
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-  File "hw11.py", line 174, in duel
-    adv1.attack(adv2)
-  File "hw11.py", line 121, in attack
-    print(str(self.name)+' sneak attacks '+str(target.name)+' for '+str(damage))+' damage'
-TypeError: unsupported operand type(s) for +: 'NoneType' and 'str'
-```
 
 
-+ Fail: 
++ Pass: 
 Check that the result of evaluating
    ```
    b2 = Fighter('2B',5,8,5,2); s9 = Thief('9S',3,2,6,4); duel(s9,b2)
@@ -521,21 +462,6 @@ Check that the result of evaluating
    
 
 
-   Test failed. The following errors were reported:
-
-```
- 
-9S - HP: 24
-2B - HP: 60
-9S sneak attacks 2B for 45
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-  File "hw11.py", line 174, in duel
-    adv1.attack(adv2)
-  File "hw11.py", line 121, in attack
-    print(str(self.name)+' sneak attacks '+str(target.name)+' for '+str(damage))+' damage'
-TypeError: unsupported operand type(s) for +: 'NoneType' and 'str'
-```
 
 
 + Pass: 
@@ -550,7 +476,7 @@ Check that the result of evaluating
 
 
 
-+ Fail: 
++ Pass: 
 Check that the result of evaluating
    ```
    a2 = Wizard('A2',6,4,3,1); s9 = Thief('9S',3,2,6,4); b2 = Fighter('2B',5,8,5,2); duel(a2,b2); duel(s9,b2)
@@ -560,36 +486,9 @@ Check that the result of evaluating
    
 
 
-   Test failed. The following errors were reported:
-
-```
- 
-A2 - HP: 36
-2B - HP: 60
-A2 casts fireball on 2B for 18 damage
-2B attacks A2 for 22 damage
-A2 - HP: 14
-2B - HP: 42
-A2 attacks 2B for 8 damage
-2B attacks A2 for 22 damage
-A2 - HP: -8
-2B - HP: 34
-2B wins!
-False
-9S - HP: 24
-2B - HP: 34
-9S sneak attacks 2B for 45
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-  File "hw11.py", line 174, in duel
-    adv1.attack(adv2)
-  File "hw11.py", line 121, in attack
-    print(str(self.name)+' sneak attacks '+str(target.name)+' for '+str(damage))+' damage'
-TypeError: unsupported operand type(s) for +: 'NoneType' and 'str'
-```
 
 
-+ Fail: 
++ Pass: 
 Check that the result of evaluating
    ```
    tournament([Wizard('A2',6,4,3,1), Fighter('2B',5,8,5,2), Thief('9S',3,2,6,4)]).name
@@ -599,39 +498,9 @@ Check that the result of evaluating
    
 
 
-   Test failed. The following errors were reported:
-
-```
- 
-A2 - HP: 36
-2B - HP: 60
-A2 casts fireball on 2B for 18 damage
-2B attacks A2 for 22 damage
-A2 - HP: 14
-2B - HP: 42
-A2 attacks 2B for 8 damage
-2B attacks A2 for 22 damage
-A2 - HP: -8
-2B - HP: 34
-2B wins!
-9S - HP: 24
-2B - HP: 34
-9S sneak attacks 2B for 45
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-  File "hw11.py", line 215, in tournament
-    return tournament(adv_list)
-  File "hw11.py", line 198, in tournament
-    duel_result=duel(player1,player2)
-  File "hw11.py", line 174, in duel
-    adv1.attack(adv2)
-  File "hw11.py", line 121, in attack
-    print(str(self.name)+' sneak attacks '+str(target.name)+' for '+str(damage))+' damage'
-TypeError: unsupported operand type(s) for +: 'NoneType' and 'str'
-```
 
 
-+ Fail: 
++ Pass: 
 Check that the result of evaluating
    ```
    tournament([Adventurer('Obi-Wan',13,3,5,7), Adventurer('Anakin',12,6,6,4), Adventurer('Tony',5,2,4,1), Adventurer('John',8,6,5,2), Wizard('Vaarsuvius',16,8,12,20), Fighter('Roy',16,20,14,16), Thief('Haley',16,12,22,14) ]).name
@@ -641,22 +510,5 @@ Check that the result of evaluating
    
 
 
-   Test failed. The following errors were reported:
-
-```
- 
-Haley - HP: 128
-Roy - HP: 192
-Haley sneak attacks Roy for 190
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-  File "hw11.py", line 198, in tournament
-    duel_result=duel(player1,player2)
-  File "hw11.py", line 174, in duel
-    adv1.attack(adv2)
-  File "hw11.py", line 121, in attack
-    print(str(self.name)+' sneak attacks '+str(target.name)+' for '+str(damage))+' damage'
-TypeError: unsupported operand type(s) for +: 'NoneType' and 'str'
-```
 
 
