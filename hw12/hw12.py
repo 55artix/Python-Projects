@@ -1,6 +1,6 @@
 import tkinter as tk
 import random
-
+#The Part 1 of Extra Credit is completed. 
 #FIRST: Implement and test your Pokemon class below
 class Pokemon:
 #==========================================
@@ -58,7 +58,7 @@ class SafariSimulator(tk.Frame):
         #DO NOT MODIFY: These lines set window parameters and create widgets
         tk.Frame.__init__(self, master)
         master.minsize(width=275, height=350)
-        master.maxsize(width=275, height=350)
+        master.maxsize(width=275, height=450)
         master.title("Safari Zone Simulator")
         
         self.balls=30
@@ -69,7 +69,8 @@ class SafariSimulator(tk.Frame):
         #Call nextPokemon() method here to initialize your first random pokemon
         #self.nextpokemon=self.nextPokemon()
 #==========================================
-# Purpose: Creates a button for throwing the Safari ball, binds it to the throwBall method, creates a Label for the Pokemon sprite image and Catch Probability.   
+# Purpose: Creates a button for throwing the Safari ball, binds it to the throwBall method, creates a Label for the Pokemon sprite image and Catch Probability.
+#Extra credit: Creates label for run probability and another label for whether run_catch_Label.  
 # Input Parameter(s): self-provides reference to class instance.  
 # Return Value(s): None
 #==========================================
@@ -94,7 +95,7 @@ class SafariSimulator(tk.Frame):
 
         #A label for status messages has been completed for you as an example:
         self.messageLabel = tk.Label(bg="grey")
-        self.messageLabel.pack(fill="x", padx=5, pady=5)
+        self.messageLabel.pack(fill="x", padx=5, pady=1)
 
         #You need to create two additional labels:
 
@@ -110,10 +111,20 @@ class SafariSimulator(tk.Frame):
         #label.pack()
         #Complete and pack the catchProbLabel here.
         self.catchProbLabel = tk.Label(bg="grey")
-        self.catchProbLabel.pack(fill="x", padx=5, pady=5)
+        self.catchProbLabel.pack(fill="x", padx=5, pady=1)
+
+        #Complete and pack the runProbLabel here.
+        self.runProbLabel = tk.Label(bg="pink")
+        self.runProbLabel.pack(fill="x", padx=5, pady=1)
+
+        #Complete and pack the run_catch_Label here.
+        self.run_catch_Label = tk.Label(bg="white")
+        self.run_catch_Label.pack(fill="x", padx=5, pady=1)
+
 #==========================================
 # Purpose:Picks a random Pokemon out of 151 possibilities, updates the message label, updates the probability label, PhotoImage object created and saved
-# to an instance variable, and image label is updated.  
+# to an instance variable, and image label is updated.
+#Extra credit-the run probability label is updated.  
 # Input Parameter(s): self-provides reference to class instance 
 # Return Value(s): None
 #==========================================        
@@ -129,14 +140,17 @@ class SafariSimulator(tk.Frame):
         self.poke_photo=tk.PhotoImage(file=fname)
         self.pokemonImageLabel["image"]=self.poke_photo
         self.pokemonImageLabel.photo=self.poke_photo
-        self.pokemonImageLabel.pack()
+        
 
         self.messageLabel["text"]="You have encountered a wild "+str(species)
-        self.messageLabel.pack()
+        
 
         self.probability_of_catch=min((int(catch_rate)+1),151)/449.5
         self.catchProbLabel["text"]="Your chance of catching it is "+str(int(self.probability_of_catch*100))+"%!"
-        self.catchProbLabel.pack()
+    
+        self.run_prob=(2*(int(speed))/256)
+        self.runProbLabel['text']='The chance of '+str(species)+' running is '+str(int(self.run_prob*100))+'%'
+        
         print("In nextPokemon")
         
         #This method must:
@@ -158,7 +172,8 @@ class SafariSimulator(tk.Frame):
 #==========================================
 # Purpose: Generates a random number between 0 and 1 and uses that number to see if the Pokemon was caught.  The ThrowButton is then updated to reflect the
 #used Safari balls, and an escape message is updated on the message label if the Pokemon was not caught.  Then endAdventure is called if the balls are all used up, or nextPokemon
-#is called if the Pokemon was caught.  
+#is called if the Pokemon was caught.
+#Extra credit-Tells the difference between whether the GUI changed because the current one was caught or because it ran away.
 # Input Parameter(s): self-provides reference to class instance  
 # Return Value(s): None
 #==========================================        
@@ -179,9 +194,16 @@ class SafariSimulator(tk.Frame):
         random_num=random.random()
         if random_num<self.probability_of_catch:
             self.caught.append(self.random_pokemon.species)
+            print('hello, caught')
+            self.run_catch_Label['text']='The '+str(self.random_pokemon.species)+" was caught!"
             self.nextPokemon()
         else:
-            self.messageLabel['text']="Aargh! It escaped!"
+            rando=random.random()
+            if rando<self.run_prob:
+                self.run_catch_Label['text']='The '+str(self.random_pokemon.species)+" has run!"
+                self.nextPokemon()
+            else:
+                self.messageLabel['text']="Aargh! It escaped!"
         self.balls-=1
         self.throwButton["text"]="Throw Safari Ball ("+str(self.balls)+"left)"
         if self.balls<=0:
@@ -218,6 +240,8 @@ class SafariSimulator(tk.Frame):
         self.runButton.pack_forget()
         self.pokemonImageLabel.pack_forget()
         self.catchProbLabel.pack_forget()
+        self.run_catch_Label.pack_forget()
+        self.runProbLabel.pack_forget()
         print("In endAdventure")
         
         #This method must: 
