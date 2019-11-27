@@ -3,17 +3,34 @@ import random
 
 #FIRST: Implement and test your Pokemon class below
 class Pokemon:
+#==========================================
+# Purpose: Initializes the class Pokemon with the instance variables, self, species, dex_num, catch_rate, and speed.  
+# Input Parameter(s): self-provides reference to class instance, species-type of Pokemon, dex_num-the dex number of the Pokemon
+#catch_rate-the catch rate of the Pokemon, and speed-the speed of the pokemon.  
+# Return Value(s): None
+#==========================================
     def __init__(self,species='',dex_num=0,catch_rate=0,speed=0):
         self.species=species
         self.dex_num=dex_num
         self.catch_rate=catch_rate
         self.speed=speed
+#==========================================
+# Purpose: Overloads the string method to return the species.  
+# Input Parameter(s): self-provides reference to class instance  
+# Return Value(s): None
+#==========================================
     def __str__(self):
         return str(self.species)
 
 
 #NEXT: Complete the class definition provided below
 class SafariSimulator(tk.Frame):
+#==========================================
+# Purpose: Reads pokedex.csv, stores it in a list, has a way to keep track of the remaining balls, has a way to keep track of caught Pokemon,
+# and calls the nextPokemon method after createWidgets.  
+# Input Parameter(s): self-provides reference to class instance, master-represents the window/display screen
+# Return Value(s): None
+#==========================================
     def __init__(self, master=None):
         super().__init__(master)
         self.master=master
@@ -29,6 +46,7 @@ class SafariSimulator(tk.Frame):
             pokemon.catch_rate=item_list[2]
             pokemon.speed=item_list[3].split('\n')[0]
             self.pokemon_list.append(pokemon)
+        f.close()
         print("In SafariSimulator init")
         #Read in the data file from pokedex.csv at some point here
         #It's up to you how you store and handle the data 
@@ -50,7 +68,11 @@ class SafariSimulator(tk.Frame):
         self.nextPokemon()
         #Call nextPokemon() method here to initialize your first random pokemon
         #self.nextpokemon=self.nextPokemon()
-
+#==========================================
+# Purpose: Creates a button for throwing the Safari ball, binds it to the throwBall method, creates a Label for the Pokemon sprite image and Catch Probability.   
+# Input Parameter(s): self-provides reference to class instance.  
+# Return Value(s): None
+#==========================================
     def createWidgets(self):
         print("In createWidgets")
         #See the image in the instructions for the general layout required
@@ -89,7 +111,12 @@ class SafariSimulator(tk.Frame):
         #Complete and pack the catchProbLabel here.
         self.catchProbLabel = tk.Label(bg="grey")
         self.catchProbLabel.pack(fill="x", padx=5, pady=5)
-        
+#==========================================
+# Purpose:Picks a random Pokemon out of 151 possibilities, updates the message label, updates the probability label, PhotoImage object created and saved
+# to an instance variable, and image label is updated.  
+# Input Parameter(s): self-provides reference to class instance 
+# Return Value(s): None
+#==========================================        
     def nextPokemon(self):
         print('hi',len(self.pokemon_list))
         self.random_pokemon=random.choice(self.pokemon_list)
@@ -99,9 +126,9 @@ class SafariSimulator(tk.Frame):
         speed=self.random_pokemon.speed
         print(dex_num, speed, species, catch_rate)
         fname='sprites/'+str(int(dex_num))+'.gif'
-        poke_photo=tk.PhotoImage(file=fname)
-        self.pokemonImageLabel["image"]=poke_photo
-        self.pokemonImageLabel.photo=poke_photo
+        self.poke_photo=tk.PhotoImage(file=fname)
+        self.pokemonImageLabel["image"]=self.poke_photo
+        self.pokemonImageLabel.photo=self.poke_photo
         self.pokemonImageLabel.pack()
 
         self.messageLabel["text"]="You have encountered a wild "+str(species)
@@ -128,7 +155,13 @@ class SafariSimulator(tk.Frame):
         #variable for some object (you can just set it to self.photo).
         #Not doing this will, for weird memory reasons, cause the image 
         #to not be displayed.
-        
+#==========================================
+# Purpose: Generates a random number between 0 and 1 and uses that number to see if the Pokemon was caught.  The ThrowButton is then updated to reflect the
+#used Safari balls, and an escape message is updated on the message label if the Pokemon was not caught.  Then endAdventure is called if the balls are all used up, or nextPokemon
+#is called if the Pokemon was caught.  
+# Input Parameter(s): self-provides reference to class instance  
+# Return Value(s): None
+#==========================================        
     def throwBall(self):
         print("In throwBall")
         
@@ -162,7 +195,12 @@ class SafariSimulator(tk.Frame):
         
         #Don't forget to call nextPokemon to generate a new pokemon 
         #if this one is caught.
-        
+  #==========================================
+# Purpose: This method displays message of being out of balls on one label.  It then  displays the number of Pokemon caught and a list of their names on another label.
+#All other buttons and labels are removed.  
+# Input Parameter(s): self-provides reference to class instance 
+# Return Value(s): None
+#==========================================      
     def endAdventure(self):
         
         self.messageLabel['text']='You\'re all out of balls, hope you had fun!'
