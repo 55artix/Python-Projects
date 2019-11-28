@@ -1,10 +1,10 @@
 import tkinter as tk
 import random
-#The Part 1 of Extra Credit is completed. 
+#ALL PARTS of Extra Credit is completed. (+10 points plz thx)
 #FIRST: Implement and test your Pokemon class below
 class Pokemon:
 #==========================================
-# Purpose: Initializes the class Pokemon with the instance variables, self, species, dex_num, catch_rate, and speed.  
+# Purpose: Initializes the class Pokemon with the instance variables, self, species, dex_num, catch_rate, speed,eat_count, and angry_count. 
 # Input Parameter(s): self-provides reference to class instance, species-type of Pokemon, dex_num-the dex number of the Pokemon
 #catch_rate-the catch rate of the Pokemon, and speed-the speed of the pokemon.  
 # Return Value(s): None
@@ -69,10 +69,10 @@ class SafariSimulator(tk.Frame):
         self.createWidgets()
         self.nextPokemon()
         #Call nextPokemon() method here to initialize your first random pokemon
-        #self.nextpokemon=self.nextPokemon()
+        
 #==========================================
 # Purpose: Creates a button for throwing the Safari ball, binds it to the throwBall method, creates a Label for the Pokemon sprite image and Catch Probability.
-#Extra credit: Creates label for run probability and another label for whether run_catch_Label.  
+#Extra credit: Creates label for run probability and another label for whether run_catch_Label.  Creates buttons for the bait and rocks.  
 # Input Parameter(s): self-provides reference to class instance.  
 # Return Value(s): None
 #==========================================
@@ -182,7 +182,7 @@ class SafariSimulator(tk.Frame):
 # Purpose: Generates a random number between 0 and 1 and uses that number to see if the Pokemon was caught.  The ThrowButton is then updated to reflect the
 #used Safari balls, and an escape message is updated on the message label if the Pokemon was not caught.  Then endAdventure is called if the balls are all used up, or nextPokemon
 #is called if the Pokemon was caught.
-#Extra credit-Tells the difference between whether the GUI changed because the current one was caught or because it ran away.
+#Extra credit-Tells the difference between whether the GUI changed because the current one was caught or because it ran away.  The eat and angry count are also reduced by 1.  
 # Input Parameter(s): self-provides reference to class instance  
 # Return Value(s): None
 #==========================================        
@@ -217,6 +217,8 @@ class SafariSimulator(tk.Frame):
                 self.nextPokemon()
             else:
                 self.messageLabel['text']="Aargh! It escaped!"
+            self.random_pokemon.eat_count=max(0,self.random_pokemon.eat_count-1)
+            self.random_pokemon.angry_count=max(0,self.random_pokemon.angry_count-1)
         self.balls-=1
         self.throwButton["text"]="Throw Safari Ball ("+str(self.balls)+"left)"
         if self.balls<=0:
@@ -230,6 +232,12 @@ class SafariSimulator(tk.Frame):
         
         #Don't forget to call nextPokemon to generate a new pokemon 
         #if this one is caught.
+  #==========================================
+# Purpose: This method is binded to the rock button and updates the catchProb, runProb, runProbLabel, catchProbLabel, eat_count, and angry_count. If the pokemon has run, it updates the
+#run_catch_Label and calls nextPokemon.  Afterward, the angry_count is reduced by 1. 
+# Input Parameter(s): self-provides reference to class instance 
+# Return Value(s): None
+#==========================================   
     def throwRock(self):
         self.catchProb=min(2*self.catchProb,.33)
         self.runProb=min(255,4*int(self.random_pokemon.speed))/256
@@ -241,7 +249,14 @@ class SafariSimulator(tk.Frame):
         if random_run<self.runProb:
             self.run_catch_Label['text']='The '+str(self.random_pokemon.species)+" has run!"
             self.nextPokemon()
-
+        
+        self.random_pokemon.angry_count=max(0,self.random_pokemon.angry_count-1)
+  #==========================================
+# Purpose: This method is binded to the bait button and updates the catchProb, runProb, runProbLabel, catchProbLabel, eat_count, and angry_count. If the pokemon has run, it updates the
+#run_catch_Label and calls nextPokemon.    Afterward, the eat_count is reduced by 1.
+# Input Parameter(s): self-provides reference to class instance 
+# Return Value(s): None
+#==========================================   
     def throwBait(self):
         print('in throw bait')
         self.catchProb=self.catchProb/2
@@ -254,7 +269,8 @@ class SafariSimulator(tk.Frame):
         if random_run<self.runProb:
             self.run_catch_Label['text']='The '+str(self.random_pokemon.species)+" has run!"
             self.nextPokemon()
-        
+        self.random_pokemon.eat_count=max(0,self.random_pokemon.eat_count-1)
+           
   #==========================================
 # Purpose: This method displays message of being out of balls on one label.  It then  displays the number of Pokemon caught and a list of their names on another label.
 #All other buttons and labels are removed.  
