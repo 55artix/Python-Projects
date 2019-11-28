@@ -14,6 +14,8 @@ class Pokemon:
         self.dex_num=dex_num
         self.catch_rate=catch_rate
         self.speed=speed
+        self.eat_count=0
+        self.angry_count=0
 #==========================================
 # Purpose: Overloads the string method to return the species.  
 # Input Parameter(s): self-provides reference to class instance  
@@ -58,12 +60,12 @@ class SafariSimulator(tk.Frame):
         #DO NOT MODIFY: These lines set window parameters and create widgets
         tk.Frame.__init__(self, master)
         master.minsize(width=275, height=350)
-        master.maxsize(width=275, height=450)
+        master.maxsize(width=400, height=450)
         master.title("Safari Zone Simulator")
         
         self.balls=30
         
-        self.pack()
+        #self.pack()
         self.createWidgets()
         self.nextPokemon()
         #Call nextPokemon() method here to initialize your first random pokemon
@@ -82,44 +84,51 @@ class SafariSimulator(tk.Frame):
 
 
         #"Run Away" button has been completed for you as an example:
-        self.runButton = tk.Button(self)
+        self.runButton = tk.Button()
+        self.runButton.grid(row=1,column=1)
         self.runButton["text"] = "Run Away"
         self.runButton["command"] = self.nextPokemon
-        self.runButton.pack(side="bottom")
+
 
         #You need to create an additional "throwButton"
-        self.throwButton = tk.Button(self)
+        self.throwButton = tk.Button()
+        self.throwButton.grid(row=0,column=0)
         self.throwButton["text"] = "Throw Safari Ball ("+str(self.balls)+"left)"
         self.throwButton["command"] = self.throwBall
-        self.throwButton.pack(side='top')  
 
+        #rockButton
+        self.rockButton = tk.Button()
+        self.rockButton.grid(row=1,column=0)
+        self.rockButton["text"] = "Throw rock button"
+        self.rockButton["command"] = self.throwRock
+
+        #baitButton
+        self.baitButton = tk.Button()
+        self.baitButton.grid(row=0,column=1)
+        self.baitButton["text"] = "Throw bait button"
+        self.baitButton["command"] = self.throwBait
+        
         #A label for status messages has been completed for you as an example:
-        self.messageLabel = tk.Label(bg="grey")
-        self.messageLabel.pack(fill="x", padx=5, pady=1)
+        self.messageLabel = tk.Label(bg="purple")
+        self.messageLabel.grid(row=2, columnspan=50, pady=1, sticky="NSEW")
 
         #You need to create two additional labels:
 
         #Complete and pack the pokemonImageLabel here.
-        self.pokemonImageLabel = tk.Label(bg="white")
-        self.pokemonImageLabel.pack(fill="x", pady=1)
-        #pokemon=self.nextpokemon
-        #dex=nextpokemon.dex_num
-        #fname='sprites\/'+str(dex)+('.gif')
-        #poke_photo=tk.PhotoImage(file=fname)
-        #label=tk.Label(image=poke_photo)
-        #label.photo=poke_photo
-        #label.pack()
+        self.pokemonImageLabel = tk.Label(bg="green")
+        self.pokemonImageLabel.grid(row=3, columnspan=50, pady=1, sticky="NSEW")
+        
         #Complete and pack the catchProbLabel here.
-        self.catchProbLabel = tk.Label(bg="grey")
-        self.catchProbLabel.pack(fill="x", padx=5, pady=1)
+        self.catchProbLabel = tk.Label(bg="blue")
+        self.catchProbLabel.grid(row=4, columnspan=50, pady=1, sticky="NSEW")
 
         #Complete and pack the runProbLabel here.
         self.runProbLabel = tk.Label(bg="pink")
-        self.runProbLabel.pack(fill="x", padx=5, pady=1)
+        self.runProbLabel.grid(row=5, columnspan=50, pady=1, sticky="NSEW")
 
         #Complete and pack the run_catch_Label here.
         self.run_catch_Label = tk.Label(bg="white")
-        self.run_catch_Label.pack(fill="x", padx=5, pady=1)
+        self.run_catch_Label.grid(row=6, columnspan=50, pady=1, sticky="NSEW")
 
 #==========================================
 # Purpose:Picks a random Pokemon out of 151 possibilities, updates the message label, updates the probability label, PhotoImage object created and saved
@@ -145,11 +154,11 @@ class SafariSimulator(tk.Frame):
         self.messageLabel["text"]="You have encountered a wild "+str(species)
         
 
-        self.probability_of_catch=min((int(catch_rate)+1),151)/449.5
-        self.catchProbLabel["text"]="Your chance of catching it is "+str(int(self.probability_of_catch*100))+"%!"
+        self.catchProb=min(int(self.random_pokemon.catch_rate)+1, 151)/449.5
+        self.catchProbLabel["text"]="Your chance of catching it is "+str(int(self.catchProb*100))+"%!"
     
-        self.run_prob=(2*(int(speed))/256)
-        self.runProbLabel['text']='The chance of '+str(species)+' running is '+str(int(self.run_prob*100))+'%'
+        self.runProb=2*int(self.random_pokemon.speed)/256
+        self.runProbLabel['text']='The chance of '+str(species)+' running is '+str(int(self.runProb*100))+'%'
         
         print("In nextPokemon")
         
@@ -191,15 +200,19 @@ class SafariSimulator(tk.Frame):
         #less than min((catchRate+1), 151) / 449.5, then it is caught. 
         #catchRate is the integer in the Catch Rate column in pokedex.csv, 
         #for whatever pokemon is being targetted.
+        if self.random_pokemon.eat_count==0 and self.random_pokemon.angry_count==0:
+            self.catchProb=min(int(self.random_pokemon.catch_rate)+1, 151)/449.5
+            self.runProb=2*int(self.random_pokemon.speed)/256
+            
         random_num=random.random()
-        if random_num<self.probability_of_catch:
+        if random_num<self.catchProb:
             self.caught.append(self.random_pokemon.species)
             print('hello, caught')
             self.run_catch_Label['text']='The '+str(self.random_pokemon.species)+" was caught!"
             self.nextPokemon()
         else:
             rando=random.random()
-            if rando<self.run_prob:
+            if rando<self.runProb:
                 self.run_catch_Label['text']='The '+str(self.random_pokemon.species)+" has run!"
                 self.nextPokemon()
             else:
@@ -217,6 +230,31 @@ class SafariSimulator(tk.Frame):
         
         #Don't forget to call nextPokemon to generate a new pokemon 
         #if this one is caught.
+    def throwRock(self):
+        self.catchProb=min(2*self.catchProb,.33)
+        self.runProb=min(255,4*int(self.random_pokemon.speed))/256
+        self.runProbLabel['text']='The chance of '+str(self.random_pokemon.species)+' running is '+str(int(self.runProb*100))+'%'
+        self.catchProbLabel['text']='The chance of '+str(self.random_pokemon.species)+' catching it is '+str(int(self.catchProb*100))+'%'
+        self.random_pokemon.eat_count=0
+        self.random_pokemon.angry_count+=random.randint(1,5)
+        random_run=random.random()
+        if random_run<self.runProb:
+            self.run_catch_Label['text']='The '+str(self.random_pokemon.species)+" has run!"
+            self.nextPokemon()
+
+    def throwBait(self):
+        print('in throw bait')
+        self.catchProb=self.catchProb/2
+        self.runProb=int(self.random_pokemon.speed)/2/256
+        self.runProbLabel['text']='The chance of '+str(self.random_pokemon.species)+' running is '+str(int(self.runProb*100))+'%'
+        self.catchProbLabel['text']='The chance of '+str(self.random_pokemon.species)+' catching it is '+str(int(self.catchProb*100))+'%'
+        self.random_pokemon.eat_count+=random.randint(1,5)
+        self.random_pokemon.angry_count=0
+        random_run=random.random()
+        if random_run<self.runProb:
+            self.run_catch_Label['text']='The '+str(self.random_pokemon.species)+" has run!"
+            self.nextPokemon()
+        
   #==========================================
 # Purpose: This method displays message of being out of balls on one label.  It then  displays the number of Pokemon caught and a list of their names on another label.
 #All other buttons and labels are removed.  
@@ -227,21 +265,23 @@ class SafariSimulator(tk.Frame):
         
         self.messageLabel['text']='You\'re all out of balls, hope you had fun!'
         self.caughtLabel = tk.Label(bg="grey")
-        self.caughtLabel.pack(fill="x", pady=1)
-        self.caughtLabel.pack()
+        self.caughtLabel.grid(row=3, columnspan=50, pady=1, sticky="NSEW")
         if len(self.caught)==0:
             self.caughtLabel['text']="Oops, you caught 0 Pokemon."
-        string="You have caught "+str(len(self.caught))+' Pokemon:\n'
+        else:
+            string="You have caught "+str(len(self.caught))+' Pokemon:\n'
         for poke in self.caught:
             string+=poke+'\n'
         self.caughtLabel["text"]=string
     
-        self.throwButton.pack_forget()
-        self.runButton.pack_forget()
-        self.pokemonImageLabel.pack_forget()
-        self.catchProbLabel.pack_forget()
-        self.run_catch_Label.pack_forget()
-        self.runProbLabel.pack_forget()
+        self.throwButton.grid_forget()
+        self.runButton.grid_forget()
+        self.baitButton.grid_forget()
+        self.rockButton.grid_forget()
+        self.pokemonImageLabel.grid_forget()
+        self.catchProbLabel.grid_forget()
+        self.run_catch_Label.grid_forget()
+        self.runProbLabel.grid_forget()
         print("In endAdventure")
         
         #This method must: 
