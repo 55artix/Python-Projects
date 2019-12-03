@@ -6,21 +6,17 @@ Note that due to the nature of Homework 12, the tests for this week are very min
 
 Any questions/errors with the Automated Feedback should be reported to Nathan Taylor: taylo740@umn.edu
 
-Run on November 27, 00:46:48 AM.
+Run on December 03, 03:43:42 AM.
 
-+ Fail: Change into directory "hw12".
++ Pass: Change into directory "hw12".
 
-     Directory "hw12" not found.
++ Pass: Check that file "hw12.py" exists.
 
-+ Skip: Check that file "hw12.py" exists.
++ Pass: Secret Test
 
-  This test was not run because of an earlier failing test.
++ Pass: Check that a Python file "hw12.py" has no syntax errors.
 
-+ Skip: Secret Test
+    Python file "hw12.py" has no syntax errors.
 
-  This test was not run because of an earlier failing test.
 
-+ Skip: Check that a Python file "hw12.py" has no syntax errors.
-
-  This test was not run because of an earlier failing test.
 
